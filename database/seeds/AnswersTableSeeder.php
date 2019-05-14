@@ -1,5 +1,6 @@
 <?php
 
+use App\Question;
 use Illuminate\Database\Seeder;
 
 class AnswersTableSeeder extends Seeder
@@ -11,6 +12,15 @@ class AnswersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $users = App\User::all();
+        for ($i = 1; $i <= 6; $i++) {
+            $users->each(function ($user) {
+                $question = App\Question::inRandomOrder()->first();
+                $answer = factory(\App\Answer::class)->make();
+                $answer->user()->associate($user);
+                $answer->question()->associate($question);
+                $answer->save();
+                });
+            }
+        }
     }
-}
