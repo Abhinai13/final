@@ -37,14 +37,6 @@
                             <div class="card">
                                 <div class="card-body">{{$answer->body}}</div>
                                 <div class="card-footer">
-                                    <a class="btn btn-success"
-                                       href="{{ route('vote.downvote', ['answer_id'=> $answer->id]) }}">
-                                        UP
-                                    </a>
-                                    <a class="btn btn-danger"
-                                       href="{{ route('vote.downvote', ['answer_id'=> $answer->id]) }}">
-                                        Down
-                                    </a>
                                     <a class="btn btn-primary float-right"
                                        href="{{ route('answer.show', ['question_id'=> $question->id,'answer_id' => $answer->id]) }}">
                                         View
