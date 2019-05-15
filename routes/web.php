@@ -35,6 +35,10 @@ Route::patch('/question/{question_id}/answer/{answer_id}', 'AnswerController@upd
 Route::delete('/question/{question_id}/answer/{answer_id}', 'AnswerController@destroy')->name('answer.destroy');
 
 
+Route::get('/vote/answer/{answer_id}','VoteController@upvote')->name('vote.upvote');
+Route::get('/vote/answer/{answer_id}','VoteController@downvote')->name('vote.downvote');
+
+
 
 
 Route::resources([

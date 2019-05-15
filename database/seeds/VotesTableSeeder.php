@@ -1,11 +1,9 @@
 <?php
 
 use App\Answer;
-use App\Question;
-
 use Illuminate\Database\Seeder;
 
-class VoteTableSeeder extends Seeder
+class VotesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
