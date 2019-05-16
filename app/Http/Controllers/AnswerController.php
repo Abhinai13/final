@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Answer;
 use App\Question;
+use App\Vote;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 class AnswerController extends Controller
@@ -57,7 +58,10 @@ class AnswerController extends Controller
     public function show($question,  $answer)
     {
         $answer = Answer::find($answer);
-        return view('answer')->with(['answer' => $answer, 'question' => $question]);
+       // $vote = Vote::find($answer);
+        $upcount = DB::table('votes')-> where(['upvote','=',1], ['answer','=',$answer]);
+        $downcount = DB::table('votes')-> where(['downvote','=',1], ['answer','=',$answer]);
+        return view('answer')->with(['answer' => $answer, 'question' => $question, 'upcount'=>$upcount,'downcount'=>$downcount]);
     }
     /**
      * Show the form for editing the specified resource.

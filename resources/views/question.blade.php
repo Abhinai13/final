@@ -37,14 +37,30 @@
                             <div class="card">
                                 <div class="card-body">{{$answer->body}}</div>
                                 <div class="card-footer">
-                                    <a class="btn btn-success"
-                                       href="{{route('vote.downvote', ['answer_id'=>$answer->id]) }}">
-                                        UP
+                                    <a class="btn btn-success btn-xs"
+                                       href="{{ route('vote.upvote', ['answer_id'=> $answer->id])}}">
+                                        + Like
                                     </a>
-                                    <a class="btn btn-danger"
+
+                                    @if(App\Vote::upvotecount($answer->id)>0)
+                                    <span>{{App\Vote::upvotecount($answer->id)}}</span>
+
+                                    @else()
+                                        &nbsp;
+                                    @endif
+
+                                    <a class="btn btn-danger btn-xs"
                                        href="{{ route('vote.downvote', ['answer_id'=> $answer->id]) }}">
-                                        Down
+                                        + Dislike
                                     </a>
+
+                                    @if(App\Vote::downvotecount($answer->id)>0)
+                                    <span>{{App\Vote::downvotecount($answer->id)}}</span>
+
+                                    @else()
+                                        &nbsp;
+                                    @endif
+
                                     <a class="btn btn-primary float-right"
                                        href="{{ route('answer.show', ['question_id'=> $question->id,'answer_id' => $answer->id]) }}">
                                         View

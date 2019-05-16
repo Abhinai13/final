@@ -13,6 +13,8 @@ class Vote extends Model
 
     ];
 
+
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -22,4 +24,14 @@ class Vote extends Model
     {
         return $this->belongsTo('App\Answer');
     }
+    public static function upvotecount($answer)
+    {
+        return Vote::where(['upvote' => 1, 'answer_id'=> $answer])->count();
+    }
+    public static function downvotecount($answer)
+    {
+        return Vote::where(['downvote' => 1, 'answer_id'=> $answer])->count();
+
+    }
+
 }

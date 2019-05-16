@@ -29,13 +29,15 @@ Route::delete('/user/{user_id}/profile/{profile_id}', 'ProfileController@destroy
 
 Route::get('/question/{question_id}/answer/create', 'AnswerController@create')->name('answer.create');
 Route::get('/question/{question_id}/answer/{answer_id}', 'AnswerController@show')->name('answer.show');
+//Route::get('/question/{question_id}/answer/{answer_id}/upcount/{upcount}/downcount/{downcount}', 'AnswerController@show')->name('answer.show');
 Route::get('/question/{question_id}/answer/{answer_id}/edit', 'AnswerController@edit')->name('answer.edit');
 Route::post('/question/{question_id}/answer/', 'AnswerController@store')->name('answer.store');
 Route::patch('/question/{question_id}/answer/{answer_id}', 'AnswerController@update')->name('answer.update');
 Route::delete('/question/{question_id}/answer/{answer_id}', 'AnswerController@destroy')->name('answer.destroy');
 
 
-Route::get('/vote/answer/{answer_id}','VoteController@upvote')->name('vote.upvote');
+//Route::get('/vote/answer/{answer_id}','VoteController@upvote')->name('vote.upvote');
+Route::get('/upvote/answer/{answer_id}','VoteController@upvote')->name('vote.upvote');
 Route::get('/vote/answer/{answer_id}','VoteController@downvote')->name('vote.downvote');
 
 
